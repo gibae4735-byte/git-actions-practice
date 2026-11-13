@@ -1,0 +1,32 @@
+name: Environment Variable Practice
+
+on: workflow_dispatch
+
+env:
+  APP_NAME: MyPythonApp
+  TEST_MODE: development
+
+jobs:
+  env-demo:
+    runs-on: ubuntu-latest
+
+    env:
+      PYTHON_VERSION: '3.13'
+      ACTOR: ${{ github.actor }}
+
+    steps:
+      - name: Print Environment
+        run: |
+          echo "Application: $APP_NAME"
+          echo "Python Version: $PYTHON_VERSION"
+          echo "Test Mode: $TEST_MODE"
+          echo "Actor: $ACTOR"
+
+      - name: Step Environment
+        env:
+          MESSAGE: Hello GitHub Actions
+        run: echo "$MESSAGE"
+
+      - name: Check Test Mode
+        if: ${{ env.TEST_MODE == 'development' }}
+        run: echo "Development mode enabled"
