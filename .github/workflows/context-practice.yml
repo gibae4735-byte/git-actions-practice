@@ -1,0 +1,22 @@
+name: Context Practice
+
+on: workflow_dispatch
+
+jobs:
+  context:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: GitHub Context
+        run: |
+          echo "Actor: ${{ github.actor }}"
+          echo "Repository: ${{ github.repository }}"
+          echo "Owner: ${{ github.repository_owner }}"
+          echo "Run ID: ${{ github.run_id }}"
+          echo "Workspace: ${{ github.workspace }}"
+
+      - name: Runner Context
+        run: |
+          echo "Runner Name: ${{ runner.name }}"
+          echo "Runner OS: ${{ runner.os }}"
+          echo "Runner Architecture: ${{ runner.arch }}"
