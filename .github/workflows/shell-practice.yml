@@ -1,0 +1,19 @@
+name: Shell Command Practice
+
+on: push
+
+jobs:
+  shell:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run shell commands
+        run: |
+          echo "Hello GitHub Actions"
+          pwd
+          ls -la
+          mkdir practice
+          echo "Shell Command Test" > practice/test.txt
+          cat practice/test.txt
